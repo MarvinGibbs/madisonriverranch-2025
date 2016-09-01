@@ -55,7 +55,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a href="/" class="navbar-brand"><img src="assets/img/mrr-logo.png" alt="Madison River Ranch"></a>
+						<a href="/" class="navbar-brand"><img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/mrr-logo.png" alt="Madison River Ranch"></a>
 					</div><!-- .navbar-header -->
 					
 					
