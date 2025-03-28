@@ -6,7 +6,7 @@ $board_title= get_field( 'board_title' );
 
 <!-- !BOARD
 =============================================================================== -->		
-<section id="board">
+<section id="board" class="feature-image-board">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
