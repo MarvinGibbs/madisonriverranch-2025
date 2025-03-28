@@ -13,9 +13,9 @@ $subscribe_button_text 	= get_field( 'subscribe_button_text' );
 				<p class="lead"><strong><?php echo $subscribe_text; ?></strong></p>
 			</div> <!-- .col -->
 			<div class="col-sm-4">
-				<button class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal">
+				<a class="btn btn-success btn-lg btn-block" href="/wp-content/uploads/2022/08/MRR-Guest-Letter-2.pdf" target="_blank">
 					<?php echo $subscribe_button_text; ?>
-				</button>
+				</a>
 			</div> <!-- .col -->
 		</div> <!-- .row -->
 	</div> <!-- .container -->	
