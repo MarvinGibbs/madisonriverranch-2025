@@ -45,7 +45,17 @@ function madisonriverranch_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary', 'madisonriverranch' ),
+		'footer' => esc_html__( 'Footer', 'madisonriverranch' ),
 	) );
+
+  /*
+   * Change 'Max Mega Menu' container to <nav>
+   */
+  function megamenu_use_nav_container( $defaults, $menu_id, $current_theme_location ) {
+ 	  $defaults['container'] = 'nav';
+ 	  return $defaults;
+   }
+   add_filter( "megamenu_nav_menu_args", "megamenu_use_nav_container", 10, 3 );
 
 	/*
 	 * Switch default core markup for search form, comment form, and comments
@@ -64,6 +74,10 @@ function madisonriverranch_setup() {
 		'default-color' => 'ffffff',
 		'default-image' => '',
 	) ) );
+	
+	// Remove Error: Bad value https://api.w.org/ from attribute rel on element link:
+	// the string https://api.w.org/ is not a registered keyword
+	remove_action('wp_head', 'rest_output_link_wp_head');
 }
 endif;
 add_action( 'after_setup_theme', 'madisonriverranch_setup' );
@@ -102,7 +116,8 @@ add_action( 'widgets_init', 'madisonriverranch_widgets_init' );
  * Enqueue scripts and styles.
  */
 function madisonriverranch_scripts() {
-	wp_enqueue_style( 'madisonriverranch-style', get_stylesheet_uri() );
+	$rand = rand(1, 99999999999);
+	wp_enqueue_style( 'madisonriverranch-style', get_stylesheet_uri(), '', $rand );
 
 	wp_enqueue_script( 'madisonriverranch-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
