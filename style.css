@@ -56,6 +56,33 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Elements
 --------------------------------------------------------------*/
 
+input[type=checkbox] { 
+	display:none; 
+} 
+
+
+
+input[type=checkbox] + span:before {
+  font-family: FontAwesome;
+}
+
+input[type=checkbox] + span:before { 
+	content: "\f096"; 
+} 
+
+input[type=checkbox] + span:before { 
+	letter-spacing: 10px; 
+} 
+
+input[type=checkbox]:checked + span:before { 
+	content: "\f046"; 
+} 
+
+input[type=checkbox]:checked + span:before { 
+	letter-spacing: 5px; 
+} 
+
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
@@ -70,6 +97,15 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+
+.navbar-brand {
+	padding: 10px 10px;
+}
+
+.navbar-nav > li.current_page_item a,
+.navbar-nav > li.current_page_parent a {
+	color: white;
+} 
 
 /* Small menu. */
 .menu-toggle,
@@ -233,9 +269,12 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 }
 
 .page-content,
-.entry-content,
 .entry-summary {
 	margin: 1.5em 0 0;
+}
+
+.entry-content {
+	margin: 1.5em;
 }
 
 .page-links {
@@ -359,6 +398,7 @@ object {
 	display: block;
 }
 
+
 /*--------------------------------------------------------------
 # Theme Specific Styles
 --------------------------------------------------------------*/
@@ -380,9 +420,11 @@ body {
 	background: url('/wp-content/themes/madisonriverranch/assets/img/tile.jpg') top left repeat;
 }
 
+/* == Removed to manage login users ==
 .logged-in .navbar-fixed-top {
 	top: 32px;
 }
+*/
 
 /* === !GLOBAL === */
 h1, h2, h3, h4, h5, h6 {
@@ -449,6 +491,17 @@ button, input, .btn, a.btn {
 	border-color: #6a9b3d;
 }
 
+/*--------------------------------------------------------------
+# CM Login Style adjustment
+# Turns out the background of the forms is white which prevents the text from
+# being displayed.
+#
+# DarkSlateGray;	#2F4F4F
+--------------------------------------------------------------*/
+.cmreg-form input[type=text], .cmreg-form input[type=email], .cmreg-form input[type=password], .cmreg-lost-password-fieldset input[type=email] {
+    color: #2F4F4F;
+}
+
 img {
 	max-width: 100%;
 }
@@ -504,9 +557,9 @@ blockquote:before {
 /* === !MAIN-SECTION === */
 
 #main-section {
-	background: url('/wp-content/themes/madisonriverranch/assets/img/river-view.jpg') 90% 100% no-repeat fixed;
+	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-main.jpg') center top no-repeat scroll;
 	background-size: cover;
-	min-height: 500px;
+	height: 50vh;
 	padding: 40px 0;
 	color: white;
 	-webkit-font-smoothing: antialiased;
@@ -551,6 +604,7 @@ section h3 {
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
 	font-size: 1.2em;
+	/*display: none;*/
 }
 
 #optin p {
@@ -565,6 +619,7 @@ section h3 {
 
 #board {
 	text-align: center;
+	position: relative;
 }
 
 .member {
@@ -575,6 +630,9 @@ section h3 {
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
+	-webkit-box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.75);
+	-moz-box-shado: 4px 6px 8px rgba(0, 0, 0, 0.75);
+	box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.75);
 }
 
 .member blockquote {
@@ -639,7 +697,6 @@ footer a:hover {
 .feature-image {
 	display: table;
 	width: 100%;
-	min-height: 400px;
 }
 
 .feature-image h1 {
@@ -650,38 +707,140 @@ footer a:hover {
 }
 
 
-.feature-image-default {
-	background: url('/wp-content/themes/madisonriverranch/assets/img/spring-creek.jpg')  90% 100% no-repeat fixed;
+.feature-image-contact {
+	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-contact-us.jpg') center center no-repeat scroll;
 	background-size: cover;
-	min-height: 500px;
+	height: 45vh;
 }
+
+#contact-recaptcha {
+	margin-bottom: 10px;
+}
+
+
+.feature-image-newsletters {
+	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-newsletters.jpg') center center no-repeat scroll;
+	background-size: cover;
+	height: 50vh;
+}
+
+
+.feature-image-faq {
+	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-FAQs.jpg') center center no-repeat scroll;
+	background-size: cover;
+	height: 50vh;
+}
+
+.feature-image-members-only {
+	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-members-only.jpg') center center no-repeat scroll;
+	background-size: cover;
+	height: 50vh;
+}
+
+.feature-image-access-denied {
+	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-access-denied.jpg') center center no-repeat scroll;
+	background-size: cover;
+	height: 50vh;
+}
+
+.feature-image-lost-password {
+	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-lost-password.jpg') center center no-repeat scroll;
+	background-size: cover;
+	height: 50vh;
+}
+
+.feature-image-gate {
+	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-gate-combination.jpg') center center no-repeat scroll;
+	background-size: cover;
+	height: 50vh;
+}
+
+section#board.feature-image-board::after {
+	content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.2;
+    z-index: -1;
+    background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-board.jpg') center center no-repeat scroll;
+    background-size: cover;	
+}
+
+/* === CONTACT FORM 7 === */
 
 
 /* === MEADIA QUERIES === */
 
 @media screen and ( max-width : 991px ) {
 	/* screen size smaller than 991px */
+	h1 {
+		font-size: 2em;
+	}
+	p.lead {
+		font-size: 18px;
+	}
 }
 
+/*  == Removed to manage login users ==
 @media screen and ( max-width : 782px) {
 	.logged-in .navbar-fixed-top {
 		top: 46px;
-	}	
+	}
 }
+*/
 
 @media screen and ( max-width : 768px ) {
 	/* screen size smaller than 768px */
 	#optin p {
 		margin: 0 0 10px;
 	}
+	.navbar-brand {
+		padding: 10px 10px;
+	}
 }
 
+@media screen and (max-width : 767px) {
+	#main-section .main-section-text {
+		margin-top: 10px;
+	}
+	.navbar-brand {
+		padding: 8px 8px;
+	}
+	.navbar-toggle {
+		margin-right: 8px;
+		padding: 8px 2px;
+	}
+}
+
+/*  == Removed to manage login users ==
 @media screen and ( max-width : 602px) {
 	.logged-in .navbar-fixed-top {
 		top: 42px;
 	}	
 }
+*/
 
-@media screen and ( max-width : 568px ) {
-	/* screen size smaller than 568px */
+@media screen and ( max-width : 375px ) {
+	/* screen size smaller than 375px */
+	h1 {
+		font-size: 1.5em;
+	}
+	#main-section {
+		height: 53vh;
+	}
+	#optin p.lead {
+		font-size: 15px;
+	}
+}
+
+@media screen and ( max-height : 306px ) {
+	/* screen size shorter than 306px */
+	h1 {
+		font-size: 1.5em;
+	}
+	#main-section {
+		height: 70vh;
+	}
 }
