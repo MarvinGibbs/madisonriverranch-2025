@@ -18,21 +18,24 @@
 	=============================================================================== -->
 	<footer>
 		<div class="container">
-			<div class="col-sm-3">
-				<p><a href="/"><img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/mrr-logo.png" alt="Madison River Ranch"></a></p>
+			<div class="col-sm-4">
+				<p><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/mrr-logo.png" alt="Madison River Ranch"></a></p>
 			</div> <!-- .col -->
-			<div class="col-sm-6">
-				<nav>
-					<ul class="list-unstyled list-inline">
-						<li><a href="">Home</a></li>
-						<li><a href="">Board</a></li>
-						<li><a href="">Archives</a></li>
-						<li><a href="">Contact</a></li>
-					</ul>
-				</nav>
+			<div class="col-sm-5">
+				<?php 
+						
+					wp_nav_menu( array (
+						
+						'theme_location' 	=> 'footer',
+						'container'			=> 'nav',
+						'menu_class'		=> 'list-unstyled list-inline'
+							
+					)); 
+					
+				?>
 			</div> <!-- .col -->
 			<div class="col-sm-3">
-				<p class="pull-right">&copy; 2016 Madison River Ranch</p>
+				<p class="pull-right">&copy; 2009-<?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
 			</div> <!-- .col -->
 		</div> <!-- .container -->	
 	</footer>
@@ -56,17 +59,22 @@
 				<div class="modal-body">
 					<p>Simply enter you name and email! And you will receive all association newsletters and mailings</p>
 					
-					<form class="form-inline" role="form">
+					<!-- Begin MailChimp Signup Form -->
+					<form action="//madisonriverranch.us14.list-manage.com/subscribe/post?u=69ced26c172bdf3d569b623a1&amp;id=8574a75125" method="post" name="mc-embedded-subscribe-form" class="form-inline validate" target="_blank" novalidate role="form" id="myOptin">
 						<div class="form-group">
-							<label class="sr-only" for="subscribe-name">Your name</label>
-							<input type="text" class="form-control" id="subscribe-name" placeholder="Your name">
+							<label class="sr-only" for="mce-FNAME">Your name</label>
+							<input type="text" name="FNAME" class="form-control" id="mce-FNAME" placeholder="Your name">
 						</div> <!-- form-group -->
-						<div class="form-group">
-							<label class="sr-only" for="subscribe-email">and your email</label>
-							<input type="text" class="form-control" id="subscribe-email" placeholder="and your email">
-							<input type="submit" class="btn btn-danger" value="Subscribe">
-						</div> <!-- form-group -->	
-					</form> <!-- form -->
+					    <div class="form-group">
+						    <label class="sr-only" for="mce-EMAIL">and your email</label>
+							<input type="email" value="" name="EMAIL" class="form-control" id="mce-EMAIL" placeholder="and your email">
+						    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+						    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_69ced26c172bdf3d569b623a1_8574a75125" tabindex="-1" value=""></div>
+						    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-danger" disabled="disabled">
+					    </div> <!-- form-group -->
+					</form>
+
+					<!--End mc_embed_signup-->
 					
 					<hr>
 					
@@ -81,15 +89,15 @@
 	<!-- BOOTSTRAP CORE JAVASCRIPT
 		Place at the end of the document so the pages load faster!
 	===============================================================================  -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
-	
-	<script src="<?php bloginfo('template_directory'); ?>/assets/js/jquery-2.1.1.min.js" type="text/javascript"></script>
+    
 	<script src="<?php bloginfo('template_directory'); ?>/assets/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="<?php bloginfo('template_directory'); ?>/assets/js/main.js" type="text/javascript"></script>
+ 	<script src="<?php bloginfo('template_directory'); ?>/assets/js/main.js" type="text/javascript"></script>
 	
 	<!-- Type kit fonts -->
 	<script src="//use.typekit.net/nax0mea.js"></script>
 	<script>try{Typekit.load({ async: true });}catch(e){}</script>	
+
+	<script src='https://apis.google.com/js/client.js?onload=handleClientLoad'></script>
 		
 </body>
 </html>
