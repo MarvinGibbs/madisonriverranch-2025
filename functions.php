@@ -150,13 +150,6 @@ function bbp_enable_visual_editor( $args = array() ) {
 }
 add_filter( 'bbp_after_get_the_content_parse_args', 'bbp_enable_visual_editor' );
 
-
-function bbpress_forum_guidelines() {
-	include get_template_directory() . '/inc/bbpress-forum-guidelines.php';
-}
-add_action( 'bbp_template_before_single_forum', 'bbpress_forum_guidelines' );
-add_action( 'bbp_template_before_single_topic', 'bbpress_forum_guidelines' );
-
 /**
  * Implement the Custom Header feature.
  */
