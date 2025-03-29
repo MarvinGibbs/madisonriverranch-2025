@@ -1,11 +1,11 @@
-<?php 	
+<?php
 	global $post;
-			
+
 	$publications = new WP_QUERY( array( 	'post_type' => 'publication',
-											'category_name' => 'ranch_documents', 
-											'orderby' => 'name', 
-											'order' => 'DESC' ) ); 
-																
+											'category_name' => 'ranch_documents',
+											'orderby' => 'name',
+											'order' => 'DESC' ) );
+
 	if ( $publications->have_posts() ) : ?>
 		<div class="widget">
 			<h3>Documents</h3>

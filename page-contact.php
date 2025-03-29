@@ -1,10 +1,10 @@
 <?php
 /*
-	Template Name: Contact Page	
+	Template Name: Contact Page
 */
 
 
-get_header(); 
+get_header();
 
 ?>
 
@@ -19,15 +19,19 @@ get_header();
 <div class="container">
 	<div class="row" id="primary">
 		<div id="content" class="col-sm-12">
-			
+
 			<section class="main-content">
-				
-				<?php while ( have_posts() ) : the_post(); ?>
-				
-					<?php the_content(); ?>
-				
-				<?php endwhile; ?>
-				
+
+				<?php
+				while ( have_posts() ) :
+
+					the_post();
+
+					the_content();
+
+				endwhile;
+				?>
+
 			</section> <!-- main-content -->
 		</div> <!-- content -->
 	</div> <!-- row -->
