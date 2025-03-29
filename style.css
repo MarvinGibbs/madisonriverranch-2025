@@ -56,9 +56,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 # Elements
 --------------------------------------------------------------*/
 
-input[type=checkbox] { 
-	display:none; 
-} 
+input[type=checkbox] {
+	display:none;
+}
 
 
 
@@ -66,21 +66,21 @@ input[type=checkbox] + span:before {
   font-family: FontAwesome;
 }
 
-input[type=checkbox] + span:before { 
-	content: "\f096"; 
-} 
+input[type=checkbox] + span:before {
+	content: "\f096";
+}
 
-input[type=checkbox] + span:before { 
-	letter-spacing: 10px; 
-} 
+input[type=checkbox] + span:before {
+	letter-spacing: 10px;
+}
 
-input[type=checkbox]:checked + span:before { 
-	content: "\f046"; 
-} 
+input[type=checkbox]:checked + span:before {
+	content: "\f046";
+}
 
-input[type=checkbox]:checked + span:before { 
-	letter-spacing: 5px; 
-} 
+input[type=checkbox]:checked + span:before {
+	letter-spacing: 5px;
+}
 
 
 /*--------------------------------------------------------------
@@ -105,7 +105,7 @@ input[type=checkbox]:checked + span:before {
 .navbar-nav > li.current_page_item a,
 .navbar-nav > li.current_page_parent a {
 	color: white;
-} 
+}
 
 /* Small menu. */
 .menu-toggle,
@@ -404,7 +404,7 @@ object {
 --------------------------------------------------------------*/
 
 /* COLOUR REFERENCES
-	
+
 Green:		#79b044
 Salmon:		#dd5638
 Blue Gray:	#3e4249
@@ -765,7 +765,71 @@ section#board.feature-image-board::after {
     opacity: 0.2;
     z-index: -1;
     background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-board.jpg') center center no-repeat scroll;
-    background-size: cover;	
+    background-size: cover;
+}
+
+
+/* === bbpress ===  */
+
+/* Change font size for forum posts */
+.bbpress .bbp-forums,
+.bbpress .bbp-topics,
+.bbpress .bbp-replies,
+.bbpress .bbp-search-results,
+.bbpress .bbp-topic-tags,
+.bbpress .bbp-reply-content,
+.bbpress .bbp-topic-content,
+.bbpress .bbp-topic-freshness,
+.bbpress .bbp-topic-voice-count,
+.bbpress .bbp-topic-reply-count,
+.bbpress .bbp-topic-meta,
+.bbpress .bbp-forum-content,
+.bbpress .bbp-forum-info,
+.bbpress .bbp-forum-topic-count,
+.bbpress .bbp-forum-reply-count,
+.bbpress .bbp-forum-freshness {
+	font-size: 14px !important;
+}
+
+/* Style the guidelines */
+.bbpress .bbp-guidelines {
+	/*border: 1px solid #ccc;*/
+	padding: 1em;
+	margin-top: 2em;
+	background: #f9f9f9;
+}
+
+.bbpress #accordion {
+	margin-bottom: 0;
+}
+
+.bbpress .panel-heading {
+	padding: 0;
+	/*display: block;*/
+	cursor: pointer;
+	color: #c9302c;
+}
+
+
+
+/* Change font size for forum titles */
+.bbpress .bbp-forum-title,
+.bbpress .bbp-topic-title {
+	font-size: 16px;
+}
+
+.feature-image-forums {
+	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-forums.jpg') center center no-repeat scroll;
+	background-size: cover;
+	height: 50vh;
+}
+
+#bbp-search-form input {
+	color: #2F4F4F;
+}
+
+.bbp-form input[type="text"], .bbp-form button {
+	color: #2F4F4F;
 }
 
 /* === CONTACT FORM 7 === */
@@ -818,7 +882,7 @@ section#board.feature-image-board::after {
 @media screen and ( max-width : 602px) {
 	.logged-in .navbar-fixed-top {
 		top: 42px;
-	}	
+	}
 }
 */
 
