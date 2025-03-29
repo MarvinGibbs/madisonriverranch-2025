@@ -417,7 +417,7 @@ body {
 	margin-top: 50px;
 	font-family: 'soleil', 'Raleway', Helvetica, sans-serif;
 	font-size: 16px;
-	background: url('/wp-content/themes/madisonriverranch/assets/img/tile.jpg') top left repeat;
+	background: url('/wp-content/themes/madisonriverranch-2025/assets/img/tile.jpg') top left repeat;
 }
 
 /* == Removed to manage login users ==
@@ -507,7 +507,7 @@ img {
 }
 
 .modal-content {
-	background: url('/wp-content/themes/madisonriverranch/assets/img/tile.jpg') top left repeat;
+	background: url('/wp-content/themes/madisonriverranch-2025/assets/img/tile.jpg') top left repeat;
 }
 
 .badge.social {
@@ -557,7 +557,7 @@ blockquote:before {
 /* === !MAIN-SECTION === */
 
 #main-section {
-	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-main.jpg') center top no-repeat scroll;
+	background: url('/wp-content/themes/madisonriverranch-2025/assets/img/mrr-main.jpg') center top no-repeat scroll;
 	background-size: cover;
 	height: 50vh;
 	padding: 40px 0;
@@ -708,7 +708,7 @@ footer a:hover {
 
 
 .feature-image-contact {
-	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-contact-us.jpg') center center no-repeat scroll;
+	background: url('/wp-content/themes/madisonriverranch-2025/assets/img/mrr-contact-us.jpg') center center no-repeat scroll;
 	background-size: cover;
 	height: 45vh;
 }
@@ -719,38 +719,38 @@ footer a:hover {
 
 
 .feature-image-newsletters {
-	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-newsletters.jpg') center center no-repeat scroll;
+	background: url('/wp-content/themes/madisonriverranch-2025/assets/img/mrr-newsletters.jpg') center center no-repeat scroll;
 	background-size: cover;
 	height: 50vh;
 }
 
 
 .feature-image-faq {
-	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-FAQs.jpg') center center no-repeat scroll;
+	background: url('/wp-content/themes/madisonriverranch-2025/assets/img/mrr-FAQs.jpg') center center no-repeat scroll;
 	background-size: cover;
 	height: 50vh;
 }
 
 .feature-image-members-only {
-	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-members-only.jpg') center center no-repeat scroll;
+	background: url('/wp-content/themes/madisonriverranch-2025/assets/img/mrr-members-only.jpg') center center no-repeat scroll;
 	background-size: cover;
 	height: 50vh;
 }
 
 .feature-image-access-denied {
-	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-access-denied.jpg') center center no-repeat scroll;
+	background: url('/wp-content/themes/madisonriverranch-2025/assets/img/mrr-access-denied.jpg') center center no-repeat scroll;
 	background-size: cover;
 	height: 50vh;
 }
 
 .feature-image-lost-password {
-	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-lost-password.jpg') center center no-repeat scroll;
+	background: url('/wp-content/themes/madisonriverranch-2025/assets/img/mrr-lost-password.jpg') center center no-repeat scroll;
 	background-size: cover;
 	height: 50vh;
 }
 
 .feature-image-gate {
-	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-gate-combination.jpg') center center no-repeat scroll;
+	background: url('/wp-content/themes/madisonriverranch-2025/assets/img/mrr-gate-combination.jpg') center center no-repeat scroll;
 	background-size: cover;
 	height: 50vh;
 }
@@ -764,7 +764,7 @@ section#board.feature-image-board::after {
     right: 0;
     opacity: 0.2;
     z-index: -1;
-    background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-board.jpg') center center no-repeat scroll;
+    background: url('/wp-content/themes/madisonriverranch-2025/assets/img/mrr-board.jpg') center center no-repeat scroll;
     background-size: cover;
 }
 
@@ -819,7 +819,7 @@ section#board.feature-image-board::after {
 }
 
 .feature-image-forums {
-	background: url('/wp-content/themes/madisonriverranch/assets/img/mrr-forums.jpg') center center no-repeat scroll;
+	background: url('/wp-content/themes/madisonriverranch-2025/assets/img/mrr-forums.jpg') center center no-repeat scroll;
 	background-size: cover;
 	height: 50vh;
 }
