@@ -62,6 +62,9 @@
 		<ul>
 			<li>If you see inappropriate content, use the Report function instead of escalating the situation.</li>
 		</ul>
+        <div style="text-align: left; padding-left: 3em; padding-bottom: 1em;">
+            <a class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">Read Less</a>
+        </div>
 	</div>
 </div>
 </div>
