@@ -144,9 +144,18 @@ function madisonriverranch_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'madisonriverranch_scripts' );
 
-function bbp_enable_visual_editor( $args = array() ) {
-	$args['tinymce'] = true;
+/**
+ * Configure bbPress edit area: turn on 'tinymce' and turn off 'quicktags'
+ * 'quicktags' turns off html tag option
+ *
+ * @param array $args
+ *
+ * @return array
+ */
+function bbp_enable_visual_editor( array $args = [] ): array {
+	$args['tinymce']   = true;
 	$args['quicktags'] = false;
+
 	return $args;
 }
 add_filter( 'bbp_after_get_the_content_parse_args', 'bbp_enable_visual_editor' );
