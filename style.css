@@ -60,8 +60,6 @@ input[type=checkbox] {
 	display:none;
 }
 
-
-
 input[type=checkbox] + span:before {
   font-family: FontAwesome;
 }
@@ -830,6 +828,11 @@ section#board.feature-image-board::after {
 .bbp-form input[type="text"], .bbp-form button {
 	color: #2F4F4F;
 }
+
+#bbp_topic_subscription {
+	display: inline-block; !important;
+}
+
 
 /* === CONTACT FORM 7 === */
 
