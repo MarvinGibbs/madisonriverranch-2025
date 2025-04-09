@@ -785,13 +785,18 @@ section#board.feature-image-board::after {
 .bbpress .bbp-forum-info,
 .bbpress .bbp-forum-topic-count,
 .bbpress .bbp-forum-reply-count,
-.bbpress .bbp-forum-freshness {
+.bbpress .bbp-forum-freshness
+{
 	font-size: 14px !important;
+}
+
+#bbpress-forums fieldset.bbp-form label {
+	font-size: 16px;
+	margin-left: 2px;
 }
 
 /* Style the guidelines */
 .bbpress .bbp-guidelines {
-	/*border: 1px solid #ccc;*/
 	padding: 1em;
 	margin-top: 2em;
 	background: #f9f9f9;
@@ -803,16 +808,43 @@ section#board.feature-image-board::after {
 
 .bbpress .panel-heading {
 	padding: 0;
-	/*display: block;*/
 	cursor: pointer;
 	color: #c9302c;
 }
-
 
 /* Change font size for forum titles */
 .bbpress .bbp-forum-title,
 .bbpress .bbp-topic-title {
 	font-size: 16px;
+}
+
+.bbp-form input[type="text"],
+#bbp-search-form {
+	font-family: Georgia, "Times New Roman", "Bitstream Charter", Times, serif;
+	font-size: 16px;
+	line-height: 1.5;
+	color: #333;
+	margin: 9px 10px;
+	max-width: 100%;
+	-webkit-font-smoothing: antialiased !important;
+}
+
+#bbp_topic_subscription {
+	display: inline-block; !important;
+}
+
+#bbp_topic_title {
+	margin-bottom: 5px;
+}
+
+#bbp_search {
+	color: #333;
+	margin-top: 2px;
+}
+
+#bbp_search_submit, #bbp_topic_submit {
+	background-color: #3e4249;
+	border: none;
 }
 
 .feature-image-forums {
@@ -821,23 +853,24 @@ section#board.feature-image-board::after {
 	height: 50vh;
 }
 
-#bbp-search-form input {
-	color: #2F4F4F;
+/* forum-guidelines */
+#forum-guidelines {
+	margin-top: 51px;
 }
 
-.bbp-form input[type="text"], .bbp-form button {
-	color: #2F4F4F;
-}
-
-#bbp_topic_subscription {
-	display: inline-block; !important;
+#agree-btn {
+	background-color: #3e4249;
+	border: none;
+	border-radius: 1em;
+	margin-bottom: 1em;
+	margin-left: 2em;
 }
 
 
 /* === CONTACT FORM 7 === */
 
 
-/* === MEADIA QUERIES === */
+/* === MEDIA QUERIES === */
 
 @media screen and ( max-width : 991px ) {
 	/* screen size smaller than 991px */

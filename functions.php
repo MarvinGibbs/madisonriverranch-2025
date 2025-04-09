@@ -161,6 +161,89 @@ function bbp_enable_visual_editor( array $args = [] ): array {
 add_filter( 'bbp_after_get_the_content_parse_args', 'bbp_enable_visual_editor' );
 
 /**
+ * Add Redirect logic for forum guidelines
+ */
+function redirect_to_guidelines_if_needed(): void {
+	// Check if user is trying to access the forums page
+	if ( is_user_logged_in() && bbp_is_forum_archive() ) {
+		$user_id    = get_current_user_id();
+		$has_agreed = get_user_meta( $user_id, 'agreed_to_forum_guidelines', true );
+
+		if ( ! $has_agreed ) {
+			wp_safe_redirect( home_url( '/forum-guidelines/' ) );
+			exit();
+		}
+	}
+}
+add_action( 'template_redirect', 'redirect_to_guidelines_if_needed' );
+
+/**
+ * Setup the forum guideline handling agreement
+ */
+function handle_forum_agreement(): void {
+	check_ajax_referer( 'forum_agree_nonce' );
+
+	if ( ! is_user_logged_in() ) {
+		wp_send_json_error( 'User not logged in' );
+	}
+
+	$user_id = get_current_user_id();
+	update_user_meta( $user_id, 'agreed_to_forum_guidelines', true );
+
+	wp_send_json_success();
+}
+add_action( 'wp_ajax_set_forum_agreement', 'handle_forum_agreement' );
+
+// Add checkbox to user profile
+add_action( 'show_user_profile', 'add_reset_forum_agreement_checkbox' );
+add_action( 'edit_user_profile', 'add_reset_forum_agreement_checkbox' );
+
+/**
+ * Add checkbox to user profile to turn off 'agreed_to_forum_guidelines'
+ */
+function add_reset_forum_agreement_checkbox(): void {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return; // Only for admins
+	}
+	?>
+	<h3>Forum Agreement</h3>
+	<table class="form-table">
+		<tr>
+			<th><label for="reset_forum_agreement">Reset Agreement?</label></th>
+			<td>
+				<input type="checkbox" name="reset_forum_agreement" id="reset_forum_agreement" value="1" />
+				<span class="description">Check this box to require the user to agree to the Forum Guidelines again.</span>
+			</td>
+		</tr>
+		<?php wp_nonce_field( 'reset_forum_agreement_action', 'reset_forum_agreement_nonce' ); ?>
+	</table>
+	<?php
+}
+
+// Save reset checkbox
+add_action( 'personal_options_update', 'save_reset_forum_agreement_checkbox' );
+add_action( 'edit_user_profile_update', 'save_reset_forum_agreement_checkbox' );
+
+function save_reset_forum_agreement_checkbox( $user_id ): void {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
+
+	$nonce = isset( $_POST['reset_forum_agreement_nonce'] )
+		? sanitize_text_field( wp_unslash( $_POST['reset_forum_agreement_nonce'] ) )
+		: '';
+
+	if ( ! wp_verify_nonce( $nonce, 'reset_forum_agreement_action' ) ) {
+		return;
+	}
+
+	if ( isset( $_POST['reset_forum_agreement'] ) ) {
+		delete_user_meta( $user_id, 'agreed_to_forum_guidelines' );
+	}
+}
+
+
+/**
  * Implement the Custom Header feature.
  */
 require get_template_directory() . '/inc/custom-header.php';
