@@ -26,15 +26,15 @@ get_header();
 
 				<?php require get_template_directory() . '/inc/bbpress-forum-guidelines.php'; ?>
 
-                    <div style="text-align: left; padding-left: 3em; padding-bottom: 1em;">
-                        <a class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">Read Less</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+					<div style="text-align: left; padding-left: 3em; padding-bottom: 1em;">
+						<a class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">Read Less</a>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
-        <section class="main-content">
+		<section class="main-content">
 
 					<?php
 					while ( have_posts() ) :
