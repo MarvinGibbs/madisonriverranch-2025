@@ -305,26 +305,10 @@ add_filter( 'bp_get_messages_content_value', function ( $value ) {
 	return $value;
 });
 
-//add_filter( 'template_include', function( $template ) {
-//	if ( bp_is_user() || bp_is_members_component() ) {
-//		// Look for override in the theme
-//		$theme_template = get_stylesheet_directory() . '/buddypress/members/single/home.php';
-//
-//		if ( file_exists( $theme_template ) ) {
-//			return $theme_template;
-//		}
-//
-//		// Fall back to BuddyPress Nouveau template if override is missing
-//		return buddypress()->theme_compat->theme->dir . 'buddypress/members/single/home.php';
-//	}
-//
-//	return $template;
+//add_action( 'bp_init', function () {
+//	$template = bp_locate_template( 'members/single/home.php', false, false );
+//	error_log( 'bp_locate_template result: ' . $template );
 //});
-
-add_action( 'bp_init', function() {
-	$template = bp_locate_template( 'members/single/home.php', false, false );
-	error_log( 'bp_locate_template result: ' . $template );
-});
 
 
 

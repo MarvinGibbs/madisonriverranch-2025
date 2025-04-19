@@ -35,7 +35,8 @@ get_header(); ?>
 <?php else : ?>
 
 			<?php
-			while ( have_posts() ) : the_post();
+			while ( have_posts() ) :
+				the_post();
 
 				get_template_part( 'template-parts/content', 'page' );
 
@@ -53,5 +54,9 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
+
+if ( ! function_exists( 'bp_is_user' ) || ! bp_is_user() ) {
+	get_sidebar();
+}
+
 get_footer();
