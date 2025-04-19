@@ -242,6 +242,102 @@ function save_reset_forum_agreement_checkbox( $user_id ): void {
 	}
 }
 
+/**
+ * End of bbPress.
+ */
+
+/**
+ * Start of BuddyPress
+ */
+function mrr_add_private_message_button( $author_link, $r, $args ) {
+	if ( ! function_exists( 'bp_is_active' ) || ! bp_is_active( 'messages' ) ) {
+		return $author_link;
+	}
+
+	if ( empty( $r['post_id'] ) ) {
+		return $author_link;
+	}
+
+	$user_id = get_post_field( 'post_author', $r['post_id'] );
+
+	if ( $user_id && $user_id !== get_current_user_id() ) {
+		$username = bp_core_get_username( $user_id );
+		$subject  = 'Re: ' . get_the_title( bbp_get_topic_id() );
+		$content  = "Hi $username,\n\nI saw your post and wanted to follow up.";
+		$nonce    = wp_create_nonce( 'prefill_message_fields' );
+
+		$url = bp_loggedin_user_domain() . 'messages/compose/';
+		$url = add_query_arg(
+			[
+				'r'             => $username,
+				'subject'       => $subject,
+				'content'       => $content,
+				'prefill_nonce' => $nonce,
+			],
+			$url
+		);
+
+		$author_link .= '<br><a class="pm-link" href="' . esc_url( $url ) . '">Private Message</a>';
+	}
+
+	return $author_link;
+}
+add_filter( 'bbp_get_reply_author_link', 'mrr_add_private_message_button', 10, 3 );
+
+add_filter( 'bp_get_message_get_recipient_usernames', function ( $value ) {
+	if ( isset( $_GET['r'], $_GET['prefill_nonce'] ) && wp_verify_nonce( $_GET['prefill_nonce'], 'prefill_message_fields' ) ) {
+		return sanitize_user( wp_unslash( $_GET['r'] ) );
+	}
+	return $value;
+});
+
+add_filter( 'bp_get_messages_subject_value', function ( $value ) {
+	if ( isset( $_GET['subject'], $_GET['prefill_nonce'] ) && wp_verify_nonce( $_GET['prefill_nonce'], 'prefill_message_fields' ) ) {
+		return sanitize_text_field( wp_unslash( $_GET['subject'] ) );
+	}
+	return $value;
+});
+
+add_filter( 'bp_get_messages_content_value', function ( $value ) {
+	if ( isset( $_GET['content'], $_GET['prefill_nonce'] ) && wp_verify_nonce( $_GET['prefill_nonce'], 'prefill_message_fields' ) ) {
+		return sanitize_textarea_field( wp_unslash( $_GET['content'] ) );
+	}
+	return $value;
+});
+
+//add_filter( 'template_include', function( $template ) {
+//	if ( bp_is_user() || bp_is_members_component() ) {
+//		// Look for override in the theme
+//		$theme_template = get_stylesheet_directory() . '/buddypress/members/single/home.php';
+//
+//		if ( file_exists( $theme_template ) ) {
+//			return $theme_template;
+//		}
+//
+//		// Fall back to BuddyPress Nouveau template if override is missing
+//		return buddypress()->theme_compat->theme->dir . 'buddypress/members/single/home.php';
+//	}
+//
+//	return $template;
+//});
+
+add_action( 'bp_init', function() {
+	$template = bp_locate_template( 'members/single/home.php', false, false );
+	error_log( 'bp_locate_template result: ' . $template );
+});
+
+
+
+add_filter( 'template_include', function( $template ) {
+	if ( is_user_logged_in() && bp_is_user() ) {
+		error_log( 'BuddyPress profile page template being loaded: ' . $template );
+	}
+	return $template;
+});
+
+
+
+
 
 /**
  * Implement the Custom Header feature.

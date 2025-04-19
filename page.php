@@ -17,6 +17,23 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
+<?php if ( function_exists( 'bp_is_user' ) && bp_is_user() ) : ?>
+
+	<?php
+	// Let BuddyPress fully handle the page content
+	//do_action( 'bp_before_member_home_content' ); ?>
+
+	    <?php
+	    // Include the actual BuddyPress screen content
+	    // This works if BP routing has fully taken over
+	    bp_buffer_template_part( 'members/single/home' );
+	    ?>
+    </div>
+
+	<?php //do_action( 'bp_after_member_home_content' ); ?>
+
+<?php else : ?>
+
 			<?php
 			while ( have_posts() ) : the_post();
 
@@ -29,6 +46,8 @@ get_header(); ?>
 
 			endwhile; // End of the loop.
 			?>
+
+<?php endif; ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
