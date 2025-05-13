@@ -1,6 +1,6 @@
 <?php
 /**
-	Template Name: Forums Page
+	Template Name: Trading Post Page
  */
 
 get_header();
@@ -10,7 +10,7 @@ get_header();
 <!-- FEATURE IMAGE
 =============================================================================== -->
 <section class="feature-image feature-image-forums">
-	<h1 class="page-title"><?= 'Forums'; ?></h1>
+	<h1 class="page-title"><?= 'Trading Post'; ?></h1>
 </section>
 
 	<div class="container">
@@ -18,10 +18,10 @@ get_header();
 			<div id="content" class="col-sm-12">
 				<div class="panel-group" id="accordion">
 					<div class="bbp-guidelines">
-						<strong>Forum Guidelines:</strong> Please be respectful, stay on topic, and follow all community rules.
+						<strong>Trading Post Guidelines:</strong> Please be respectful, stay on topic, and follow all community rules.
 						<a class="panel-heading" id="read-more-less" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">Read More</a>
 					</div>
-					<div id="collapseOne" class="panel-collapse collapse in>
+					<div id="collapseOne" class="panel-collapse collapse">
 				<div class="panel-body">
 
 				<?php require get_template_directory() . '/inc/bbpress-forum-guidelines.php'; ?>
@@ -31,19 +31,34 @@ get_header();
 					</div>
 				</div>
 			</div>
+                    <div class="forums-optin-wrap">
+						<?php echo do_shortcode( '[bbpnns_optin]' ); ?>
+                    </div>
+                    <div class="forum-breadcrumbs">
+	            <?php echo do_shortcode('[forum_breadcrumbs]'); ?>
+            </div>
 		</div>
 
 
 		<section class="main-content">
 
-					<?php
-					while ( have_posts() ) :
-						the_post();
+			<?php
+			do_action( 'before_main_content' );
 
-						the_content();
+			if ( bbp_is_single_forum() ) {
+				bbp_get_template_part( 'content', 'single-forum' );
+			} elseif ( bbp_is_single_topic() ) {
+				bbp_get_template_part( 'content', 'single-topic' );
+			} elseif ( bbp_is_single_reply() ) {
+				bbp_get_template_part( 'content', 'single-reply' );
+			} elseif ( bbp_is_forum_archive() || bbp_is_topic_archive() ) {
+				bbp_get_template_part( 'content', 'archive-forum' );
+			} else {
+				the_content(); // fallback if no bbPress content
+			}
 
-					endwhile; // End of the loop.
-					?>
+			do_action( 'after_main_content' );
+			?>
 
 
 				</section> <!-- main-content -->
