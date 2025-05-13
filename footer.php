@@ -11,6 +11,40 @@
 
 ?>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Check if we are on a single topic page
+        if ( document.body.classList.contains('single-topic') ) {
+
+            var replyForm = document.getElementById('new-post');
+            if ( replyForm ) {
+                replyForm.addEventListener('submit', function(event) {
+                    // Mark that user submitted a reply
+                    localStorage.setItem('scrollToLastReply', '1');
+                });
+            }
+        }
+
+        // After reload, if submission flag exists
+        if (localStorage.getItem('scrollToLastReply') === '1') {
+            localStorage.removeItem('scrollToLastReply');
+            setTimeout(function() {
+                var replies = document.querySelectorAll('.bbp-reply');
+                if (replies.length > 0) {
+                    var lastReply = replies[replies.length - 1];
+                    lastReply.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                    // Optional: highlight effect
+                    lastReply.style.backgroundColor = '#ffffcc';
+                    setTimeout(function() {
+                        lastReply.style.backgroundColor = '';
+                    }, 2000);
+                }
+            }, 800); // slight delay to allow page to render
+        }
+    });
+</script>
+
 
 <?php wp_footer(); ?>
 
@@ -22,30 +56,30 @@
 				<p><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/mrr-logo.png" alt="Madison River Ranch"></a></p>
 			</div> <!-- .col -->
 			<div class="col-sm-5">
-				<?php 
-						
+				<?php
+
 					wp_nav_menu( array (
-						
+
 						'theme_location' 	=> 'footer',
 						'container'			=> 'nav',
 						'menu_class'		=> 'list-unstyled list-inline'
-							
-					)); 
-					
+
+					));
+
 				?>
 			</div> <!-- .col -->
 			<div class="col-sm-3">
 				<p class="pull-right">&copy; 2009-<?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
 			</div> <!-- .col -->
-		</div> <!-- .container -->	
+		</div> <!-- .container -->
 	</footer>
-	
+
 	<!-- !MODAL
 	=============================================================================== -->
 	<div class="modal fade" id="myModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				
+
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">
 						<span aria-hidden="true">&times;</span>
@@ -55,10 +89,10 @@
 						<i class="fa fa-envelope"></i> Subscribe to our Mailing List
 					</h4>
 				</div> <!-- modal-header -->
-				
+
 				<div class="modal-body">
 					<p>Simply enter you name and email! And you will receive all association newsletters and mailings</p>
-					
+
 					<!-- Begin MailChimp Signup Form -->
 					<form action="//madisonriverranch.us14.list-manage.com/subscribe/post?u=69ced26c172bdf3d569b623a1&amp;id=8574a75125" method="post" name="mc-embedded-subscribe-form" class="form-inline validate" target="_blank" novalidate role="form" id="myOptin">
 						<div class="form-group">
@@ -75,13 +109,13 @@
 					</form>
 
 					<!--End mc_embed_signup-->
-					
+
 					<hr>
-					
+
 					<p><small>By providing your email you consent to receiving occasional emails &amp; newsletters. <br>No Spam. Just good stuff. We respect your privacy &amp; you may unsubscribe at any time.</small></p>
 				</div> <!-- modal-body -->
-				
-				
+
+
 			</div> <!-- modal-content -->
 		</div> <!-- modal-dialog -->
 	</div> <!-- modal -->
@@ -89,15 +123,15 @@
 	<!-- BOOTSTRAP CORE JAVASCRIPT
 		Place at the end of the document so the pages load faster!
 	===============================================================================  -->
-    
+
 	<script src="<?php bloginfo('template_directory'); ?>/assets/js/bootstrap.min.js" type="text/javascript"></script>
  	<script src="<?php bloginfo('template_directory'); ?>/assets/js/main.js" type="text/javascript"></script>
-	
+
 	<!-- Type kit fonts -->
 	<script src="//use.typekit.net/nax0mea.js"></script>
-	<script>try{Typekit.load({ async: true });}catch(e){}</script>	
+	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 
 	<script src='https://apis.google.com/js/client.js?onload=handleClientLoad'></script>
-		
+
 </body>
 </html>
