@@ -27,7 +27,7 @@ add_action(
 							.then(res => res.json())
 							.then(data => {
 								if (data.success) {
-									window.location.href = "<?php echo esc_url( home_url( '/forums/' ) ); ?>";
+									window.location.href = "<?php echo esc_url( home_url( '/trading-post/' ) ); ?>";
 								} else {
 									alert("There was a problem saving your agreement.");
 								}
@@ -47,8 +47,8 @@ require 'header.php';
 	<div class="container" id="forum-guidelines">
 		<div class="row" id="primary">
 			<div id="content" class="col-sm-12">
-				<label>To participate with Forums you must read the Forum Guidelines and click 'I Agree' at the bottom!</label>
-				<h4>Forum Guidelines</h4>
+				<label>To participate with Trading Post you must read these Guidelines and click 'I Agree' at the bottom!</label>
+				<h4>Trading Post Guidelines</h4>
 				<?php require get_template_directory() . '/inc/bbpress-forum-guidelines.php'; ?>
 
 				<form method="post">
