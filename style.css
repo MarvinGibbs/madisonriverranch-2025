@@ -766,6 +766,16 @@ section#board.feature-image-board::after {
     background-size: cover;
 }
 
+/* === bbpnns ===  */
+
+#bbpnns_confirm, #bbpnns_cancel {
+	color: #3e4249;
+}
+
+#bbpnns_optin_label {
+	margin-left: 3em;
+}
+
 
 /* === bbpress ===  */
 
@@ -776,7 +786,6 @@ section#board.feature-image-board::after {
 .bbpress .bbp-search-results,
 .bbpress .bbp-topic-tags,
 .bbpress .bbp-reply-content,
-.bbpress .bbp-topic-content,
 .bbpress .bbp-topic-freshness,
 .bbpress .bbp-topic-voice-count,
 .bbpress .bbp-topic-reply-count,
@@ -790,9 +799,51 @@ section#board.feature-image-board::after {
 	font-size: 14px !important;
 }
 
+.bbpress .bbp-topic-content {
+	font-size: 16px !important;
+}
+
+.bbp-topic-single {
+	border: 1px solid #ccc; /* Light grey border */
+	padding: 10px;
+	margin-top: 10px;
+	border-radius: 4px; /* Optional: rounded corners */
+	background: #fafafa; /* Optional: very light background */
+}
+
+.bbp-replies {
+	margin-top: 30px;
+}
+
+.bbp-reply {
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	margin-bottom: 10px;
+	padding: 2.5em;
+	background: #f9f9f9;
+}
+
+.bbp-reply-header {
+	font-weight: bold;
+	margin-bottom: 10px;
+	font-size: 14px;
+	color: #333;
+}
+
+.bbp-reply-content {
+	font-size: 16px;
+	line-height: 1.5;
+}
+
 #bbpress-forums fieldset.bbp-form label {
 	font-size: 16px;
 	margin-left: 2px;
+}
+
+.forum-description {
+	margin-top: 10px;
+	font-style: italic;
+	color: #666;
 }
 
 /* Style the guidelines */
@@ -842,7 +893,7 @@ section#board.feature-image-board::after {
 	margin-top: 2px;
 }
 
-#bbp_search_submit, #bbp_topic_submit {
+#bbp_search_submit, #bbp_topic_submit, #bbp_reply_submit {
 	background-color: #3e4249;
 	border: none;
 }
@@ -866,7 +917,129 @@ section#board.feature-image-board::after {
 	margin-left: 2em;
 }
 
-/* === BuddyPress === */
+#bbpress-forums .bbp-breadcrumb {
+	display: none;
+}
+
+.forum-breadcrumbs {
+	width: 100%;
+	margin: 0 auto 20px auto;
+	padding: 10px 15px;
+	background: none;
+	border: none;
+	text-align: left;
+	font-size: 0.9em;
+}
+
+#content section {
+	padding: 0;
+}
+
+.bbp-submit-wrapper {
+	margin-bottom: 10px;
+}
+
+.form-allowed-tags {
+	display: none;
+}
+
+/* === Front End PM (Start) === */
+
+header.entry-header {
+	display: none;
+}
+
+div.entry-content {
+	padding-top: 51px;
+}
+
+.fep-pm-link {
+	margin-left: 10px;
+	font-size: 0.85em;
+	color: #0073aa;
+}
+.fep-pm-link a {
+	color: #0073aa;
+	text-decoration: none;
+}
+.fep-pm-link a:hover {
+	color: #005177;
+	text-decoration: underline;
+}
+
+#fep-message-top,
+#message_title {
+	color: black;
+}
+
+.mrr-user-icon {
+	width: 26px;
+	height: 26px;
+	display: inline-block;
+	vertical-align: middle;
+	transition: stroke 0.2s ease, fill 0.2s ease;
+}
+
+.user-icon-menu:hover .mrr-user-icon {
+	stroke: #999;
+	fill: #f2f2f2;
+}
+
+.fep-cb, .fep-cb-check-uncheck-all,
+#allow_messages, #allow_emails, #allow_ann {
+	display: inline-block !important;
+	width: 18px;
+	height: 18px;
+	border: 2px solid #bbb;
+	background-color: #fff;
+	appearance: none;
+	border-radius: 3px;
+	cursor: pointer;
+	position: relative;
+	vertical-align: middle;
+}
+
+.fep-cb:checked::before,
+.fep-cb-check-uncheck-all:checked::before,
+#allow_messages:checked::before,
+#allow_emails:checked::before,
+#allow_ann:checked::before {
+	content: "\f00c"; /* Font Awesome check icon */
+	font-family: "FontAwesome";
+	font-weight: 900; /* Required for solid icons */
+	font-size: 14px;
+	color: #0073aa;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	line-height: 18px;
+	pointer-events: none;
+}
+
+.fep-cb:hover,
+.fep-cb-check-uncheck-all:hover,
+#allow_messages:hover,
+#allow_emails:hover,
+#allow_ann:hover {
+	border-color: #999;
+}
+
+.fep-directory-search-form-field
+{
+	color: #3e4249;
+}
+
+#fep-menu-directory {
+	display: none !important;
+}
+
+
+.fep-avatar-p {
+	display: none;
+}
+/* === Front End PM (End) === */
 
 
 /* === CONTACT FORM 7 === */
