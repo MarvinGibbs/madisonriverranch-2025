@@ -297,19 +297,61 @@ function mrr_remove_reply_link_for_participants( $links, $args ) {
  * Start of bbPress Notify (No-Spam).
  */
 
+add_action(
+	'wp_enqueue_scripts',
+	function () {
+		if ( is_singular( 'topic' ) || is_singular( 'reply' ) ) {
+			wp_enqueue_script( 'mrr-login-modal', get_stylesheet_directory_uri() . '/js/cmreg-modal.js', [], null, true );
+			wp_enqueue_style( 'mrr-login-modal-style', get_stylesheet_directory_uri() . '/css/cmreg-modal.css' );
+		}
+	}
+);
+
 add_filter(
-	'bbpnns_skip_notification',
-	function ( $skip, $user_info ) {
-		$user_id = $user_info['user_id'] ?? 0;
-		if ( ! $user_id || get_user_meta( $user_id, 'bbpnns_opt_in', true ) !== 'yes' ) {
-			return true; // Skip notification
+	'body_class',
+	function ( $classes ) {
+		if ( ! is_user_logged_in() ) {
+			$classes[] = 'not-logged-in';
 		}
 
-		return false; // Allow notification
+		return $classes;
+	}
+);
+
+add_action(
+	'wp_footer',
+	function () {
+		if ( ! is_user_logged_in() && ( is_singular( 'topic' ) || is_singular( 'reply' ) ) ) {
+			?>
+			<div id="cmreg-blocker-modal" style="display:none;">
+				<div class="cmreg-modal-content">
+					<h4>You must be logged in to view this page</h4>
+					<p>
+						<a href="#cmreg-only-login-click">Click here to log in</a>
+					</p>
+				</div>
+			</div>
+			<?php
+		}
+	}
+);
+
+add_filter(
+	'bbpnns_skip_notification',
+	function ( $email, $user_info ) {
+		if ( ! is_object( $user_info ) || empty( $user_info->ID ) ) {
+			return true; // always skip if user object is invalid
+		}
+
+		$user_id = $user_info->ID;
+		$opt_in  = get_user_meta( $user_id, 'bbpnns_opt_in', true );
+
+		return ( $opt_in === 'yes' ) ? $email : ''; // only allow if explicitly opted in
 	},
 	10,
 	2
 );
+
 
 // Register shortcode to show the opt-in checkbox
 add_shortcode(
@@ -456,7 +498,6 @@ add_action(
 		}
 	}
 );
-
 
 /**
  * End of bbPress Notify (No-Spam).
