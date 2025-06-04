@@ -294,6 +294,44 @@ function mrr_remove_reply_link_for_participants( $links, $args ) {
  */
 
 /**
+ * Start bbPress Report
+ */
+
+add_action( 'bbp_rc_reported_topic', 'notify_moderators_of_reported_topic', 10, 1 );
+function notify_moderators_of_reported_topic( $topic_id ): void {
+	$topic_title = bbp_get_topic_title( $topic_id );
+	$topic_url   = bbp_get_topic_permalink( $topic_id );
+	$message     = "A topic has been reported:\n\nTitle: $topic_title\nLink: $topic_url";
+
+	bbp_email_report_to_roles( 'Reported Topic', $message );
+}
+
+add_action( 'bbp_rc_reported_reply', 'notify_moderators_of_reported_reply', 10, 1 );
+function notify_moderators_of_reported_reply( $reply_id ): void {
+	$reply_content = bbp_get_reply_content( $reply_id );
+	$reply_url     = bbp_get_reply_url( $reply_id );
+	$message       = "A reply has been reported:\n\nContent:\n$reply_content\n\nLink: $reply_url";
+
+	bbp_email_report_to_roles( 'Reported Reply', $message );
+}
+
+/**
+ * Helper function to send email to all moderators and keymasters
+ */
+function bbp_email_report_to_roles( $subject, $body ) {
+	$roles = [ 'bbp_keymaster', 'bbp_moderator' ];
+	$users = get_users( [ 'role__in' => $roles ] );
+
+	foreach ( $users as $user ) {
+		wp_mail( $user->user_email, '[Forum Alert] ' . $subject, $body );
+	}
+}
+
+/**
+ * End bbPress Report
+ */
+
+/**
  * Start of bbPress Notify (No-Spam).
  */
 
