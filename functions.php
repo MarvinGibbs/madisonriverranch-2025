@@ -289,6 +289,16 @@ function mrr_remove_reply_link_for_participants( $links, $args ) {
 	return $links;
 }
 
+function redirect_after_topic_creation( $location, $redirect_to, $user_id ) {
+	if ( bbp_is_topic_form_post_request() && ! empty( $_POST['bbp_forum_id'] ) ) {
+		$forum_id = intval( $_POST['bbp_forum_id'] );
+		$location = bbp_get_forum_permalink( $forum_id );
+	}
+	return $location;
+}
+add_filter( 'bbp_new_topic_redirect_to', 'redirect_after_topic_creation', 10, 3 );
+
+
 /**
  * End of bbPress.
  */
@@ -870,6 +880,18 @@ function custom_admin_styles(): void {
 }
 add_action( 'admin_head', 'custom_admin_styles' );
 
+
+
+// ------------------------------------------
+// SEO: Prevent indexing of the staging subdomain
+// ------------------------------------------
+function mrr_block_indexing_on_staging() {
+    // Only output noindex on the staging subdomain
+    if ( isset($_SERVER['HTTP_HOST']) && strtolower($_SERVER['HTTP_HOST']) === 'mrr.marvgibbs.us' ) {
+        echo "<meta name=\"robots\" content=\"noindex, nofollow\">\n";
+    }
+}
+add_action( 'wp_head', 'mrr_block_indexing_on_staging' );
 
 /**
  * Implement the Custom Header feature.
