@@ -46,8 +46,6 @@
 </script>
 
 
-<?php wp_footer(); ?>
-
 	<!-- !FOOTER
 	=============================================================================== -->
 	<footer>
@@ -120,18 +118,12 @@
 		</div> <!-- modal-dialog -->
 	</div> <!-- modal -->
 
-	<!-- BOOTSTRAP CORE JAVASCRIPT
-		Place at the end of the document so the pages load faster!
-	===============================================================================  -->
-
-	<script src="<?php bloginfo('template_directory'); ?>/assets/js/bootstrap.min.js" type="text/javascript"></script>
- 	<script src="<?php bloginfo('template_directory'); ?>/assets/js/main.js" type="text/javascript"></script>
-
 	<!-- Type kit fonts -->
 	<script src="//use.typekit.net/nax0mea.js"></script>
 	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 
 	<script src='https://apis.google.com/js/client.js?onload=handleClientLoad'></script>
 
+<?php wp_footer(); ?>
 </body>
 </html>

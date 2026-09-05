@@ -132,6 +132,23 @@ function madisonriverranch_scripts() {
 	$rand = wp_rand( 1, 99999999999 );
 	wp_enqueue_style( 'madisonriverranch-style', get_stylesheet_uri(), '', $rand );
 
+	// Bootstrap 3 core CSS — was a hardcoded <link> in header.php
+	wp_enqueue_style( 'mrr-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', [], '3.3.7' );
+
+	// Font Awesome 4.6.3 — was a hardcoded <link> in header.php
+	wp_enqueue_style( 'mrr-font-awesome', get_template_directory_uri() . '/assets/css/font-awesome/css/font-awesome.min.css', [], '4.6.3' );
+
+	// Raleway (Google Fonts) — was a hardcoded <link> in header.php
+	wp_enqueue_style( 'mrr-google-fonts', 'https://fonts.googleapis.com/css?family=Raleway:400,700', [], null );
+
+	// Bootstrap 3's JS (navbar toggle, dropdown, modal) requires jQuery.
+	// This makes that dependency explicit — it previously worked only
+	// because a plugin happened to load jQuery first as a side effect.
+	wp_enqueue_script( 'mrr-bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', [ 'jquery' ], '3.3.7', true );
+
+	// was a hardcoded <script> in footer.php
+	wp_enqueue_script( 'mrr-main', get_template_directory_uri() . '/assets/js/main.js', [ 'jquery', 'mrr-bootstrap' ], '20151215', true );
+
 	wp_enqueue_script( 'madisonriverranch-navigation', get_template_directory_uri() . '/js/navigation.js', [], '20151215', true );
 
 	wp_enqueue_script( 'madisonriverranch-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', [], '20151215', true );
