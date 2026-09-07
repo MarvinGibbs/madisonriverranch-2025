@@ -130,7 +130,6 @@ add_action( 'widgets_init', 'madisonriverranch_widgets_init' );
  */
 function madisonriverranch_scripts() {
 	$rand = wp_rand( 1, 99999999999 );
-	wp_enqueue_style( 'madisonriverranch-style', get_stylesheet_uri(), '', $rand );
 
 	// Bootstrap 3 core CSS — was a hardcoded <link> in header.php
 	wp_enqueue_style( 'mrr-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', [], '3.3.7' );
@@ -140,6 +139,11 @@ function madisonriverranch_scripts() {
 
 	// Raleway (Google Fonts) — was a hardcoded <link> in header.php
 	wp_enqueue_style( 'mrr-google-fonts', 'https://fonts.googleapis.com/css?family=Raleway:400,700', [], null );
+
+	// Must load AFTER Bootstrap/Font Awesome/Google Fonts so the theme's own
+	// overrides (e.g. white button text) win the cascade — matches the
+	// original <link> order before this was converted to wp_enqueue_*.
+	wp_enqueue_style( 'madisonriverranch-style', get_stylesheet_uri(), [ 'mrr-bootstrap', 'mrr-font-awesome', 'mrr-google-fonts' ], $rand );
 
 	// Bootstrap 3's JS (navbar toggle, dropdown, modal) requires jQuery.
 	// This makes that dependency explicit — it previously worked only
