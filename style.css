@@ -424,7 +424,14 @@ Blue Gray:	#3e4249
 /* === !GENERAL === */
 
 body {
-	margin-top: 50px;
+	/* Bootstrap 5 stopgap: this 50px was clearance for BS3's .navbar-fixed-top,
+	   which takes the navbar out of flow (position:fixed) so it ignores this
+	   margin and overlays the top of the viewport regardless. BS5 has no
+	   .navbar-fixed-top, so the navbar now sits in normal flow and this margin
+	   just pushed it down, exposing a gap above it. Zeroed until the navbar is
+	   rebuilt for Bootstrap 5 (migration Step 4), which may reintroduce a fixed
+	   navbar and need this restored (likely via BS5's .fixed-top instead). */
+	margin-top: 0;
 	font-family: 'soleil', 'Raleway', Helvetica, sans-serif;
 	font-size: 16px;
 	background: url('./assets/img/tile.jpg') top left repeat;
