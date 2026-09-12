@@ -156,7 +156,9 @@ function madisonriverranch_scripts() {
 	// was a hardcoded <script> in footer.php
 	wp_enqueue_script( 'mrr-main', get_template_directory_uri() . '/assets/js/main.js', [ 'jquery', 'mrr-bootstrap' ], '20151215', true );
 
-	wp_enqueue_script( 'madisonriverranch-navigation', get_template_directory_uri() . '/js/navigation.js', [], '20151215', true );
+	// EXPERIMENT: commented out to confirm navigation.js does nothing on this site -
+	// it targets #site-navigation, which doesn't exist anywhere (theme or Max Mega Menu).
+	// wp_enqueue_script( 'madisonriverranch-navigation', get_template_directory_uri() . '/js/navigation.js', [], '20151215', true );
 
 	wp_enqueue_script( 'madisonriverranch-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', [], '20151215', true );
 
