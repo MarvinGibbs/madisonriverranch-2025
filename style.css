@@ -98,6 +98,18 @@ input[type=checkbox]:checked + span:before {
 
 .navbar-brand {
 	padding: 10px 10px;
+	color: transparent; /* Bootstrap 5 stopgap: .navbar-inverse no longer exists, so this
+	                        restores the effect of BS3's navbar-inverse text color hiding
+	                        Safari's alt-text-bleed-through in the logo's transparent gap.
+	                        Remove once the navbar is rebuilt for Bootstrap 5 (migration Step 4). */
+}
+
+/* Bootstrap 5 stopgap: .navbar-inverse / .navbar-fixed-top no longer exist in Bootstrap 5,
+   so the navbar lost its dark background entirely. This restores Bootstrap 3's original
+   navbar-inverse default background color. Remove once the navbar is rebuilt for
+   Bootstrap 5 (migration Step 4). */
+.navbar.navbar-inverse {
+	background-color: #222222;
 }
 
 .navbar-nav > li.current_page_item a,
