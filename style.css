@@ -124,6 +124,20 @@ input[type=checkbox]:checked + span:before {
 	background-color: #222222;
 }
 
+/* Step 4: BS5's .navbar has flex-wrap:wrap, and .navbar > .container inherits it,
+   so the logo and the full Max Mega Menu wrap naturally drop to their own line when
+   they don't both fit on one row - matching production's two-row shape. But
+   justify-content:space-between only distributes space when 2+ items share a flex
+   line; alone on its wrapped line, the menu just sits flush left by default.
+   Production gets its right-alignment a different way - Max Mega Menu's own CSS has
+   a clear:both rule on #mega-menu-wrap-primary (a Bootstrap 3-era float-clearing
+   trick, inert inside a flex container) plus text-align:right on the menu list.
+   margin-left:auto is the standard flex equivalent: pushes this item flush right on
+   its own line regardless of justify-content, matching production's alignment. */
+#mega-menu-wrap-primary {
+	margin-left: auto;
+}
+
 .navbar-nav > li.current_page_item a,
 .navbar-nav > li.current_page_parent a {
 	color: white;
