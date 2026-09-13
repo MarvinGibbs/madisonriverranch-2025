@@ -674,6 +674,16 @@ footer a:link, footer a:visited {
 footer a:hover {
 	color: #dd5638;
 }
+
+/* Bootstrap 5 stopgap: .list-inline no longer makes its <li> children inline
+   on its own - Bootstrap 5 requires a .list-inline-item class on each <li>,
+   which wp_nav_menu()'s menu_class option can't add (it only classes the
+   outer <ul>). This restores Bootstrap 3's old default behavior, scoped to
+   the footer menu specifically. Remove if the footer nav markup is ever
+   rebuilt to add .list-inline-item per item instead. */
+footer .list-inline > li {
+	display: inline-block;
+}
 /* === WIDGETS === */
 
 .widget {
