@@ -50,6 +50,7 @@
 	=============================================================================== -->
 	<footer>
 		<div class="container">
+			<div class="row">
 			<div class="col-sm-4">
 				<p><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/mrr-logo.png" alt="Madison River Ranch"></a></p>
 			</div> <!-- .col -->
@@ -69,6 +70,7 @@
 			<div class="col-sm-3">
 				<p class="pull-right">&copy; 2009-<?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
 			</div> <!-- .col -->
+			</div> <!-- .row -->
 		</div> <!-- .container -->
 	</footer>
 
