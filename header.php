@@ -45,20 +45,17 @@
 					</div><!-- .navbar-header -->
 					
 					
-					<!-- If the menu (WP admin area) is not set, then the "menu_class" is applied to "container".
-						 In other words, it overwrites the "container_class". 
-						 Ref: http://wordpress.org/support/topic/wp_nav_menu-menu_class-usage-bug?replies=4 -->
-					<?php 
-						
+					<?php
+						/* Step 4 cleanup: this location has Max Mega Menu enabled (Appearance > Menus),
+						   which fully replaces this call's output with its own #mega-menu-wrap-primary /
+						   #mega-menu-primary markup at every screen width - it forces its own container
+						   tag via the megamenu_nav_menu_args filter in functions.php, and ignores
+						   container_class/menu_class entirely. Those Bootstrap 3 collapse/toggle
+						   classes never reached the rendered page; removed rather than left as dead
+						   hints for a future maintainer to puzzle over. */
 						wp_nav_menu( array (
-							
-							'theme_location' 	=> 'primary',
-							'container'			=> 'nav',
-							'container_class'	=> 'navbar-collapse collapse',
-							'menu_class'		=> 'nav navbar-nav navbar-right'
-								
-						)); 
-						
+							'theme_location' => 'primary',
+						));
 					?>
 					
 				</div><!-- .container -->

@@ -1119,10 +1119,9 @@ div.entry-content {
 	.navbar-brand {
 		padding: 8px 8px;
 	}
-	.navbar-toggle {
-		margin-right: 8px;
-		padding: 8px 2px;
-	}
+	/* Step 4 cleanup: .navbar-toggle removed - Max Mega Menu renders its own mobile
+	   toggle button (its own classes, e.g. .mega-toggle-block), never Bootstrap's
+	   .navbar-toggle, so this rule never matched anything on the rendered page. */
 }
 
 /*  == Removed to manage login users ==
