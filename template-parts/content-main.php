@@ -15,7 +15,7 @@
 
 					<!-- 🎯 View Demo Button -->
 					<div class="demo-button-wrap text-center">
-						<button id="viewDemoBtn" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#videoModal">
+						<button id="viewDemoBtn" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#videoModal">
 							View Trading Post Demo
 						</button>
 					</div>
@@ -26,7 +26,7 @@
 							<div class="modal-content">
 								<div class="modal-header">
 									<h5 class="modal-title" id="videoModalLabel">Trading Post Demo</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>

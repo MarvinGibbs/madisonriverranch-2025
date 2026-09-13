@@ -19,7 +19,7 @@ get_header();
 				<div class="panel-group" id="accordion">
 					<div class="bbp-guidelines">
 						<strong>Trading Post Guidelines:</strong> Please be respectful, stay on topic, and follow all community rules.
-						<a class="panel-heading" id="read-more-less" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">Read More</a>
+						<a class="panel-heading" id="read-more-less" data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#collapseOne">Read More</a>
 					</div>
 					<div id="collapseOne" class="panel-collapse collapse">
 				<div class="panel-body">
@@ -27,7 +27,7 @@ get_header();
 				<?php require get_template_directory() . '/inc/bbpress-forum-guidelines.php'; ?>
 
 					<div style="text-align: left; padding-left: 3em; padding-bottom: 1em;">
-						<a class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">Read Less</a>
+						<a class="panel-heading" data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#collapseOne">Read Less</a>
 					</div>
 				</div>
 			</div>
