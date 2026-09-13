@@ -19,7 +19,7 @@ get_header();
 <section id="newsletters">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-5 col-sm-offset-1">
+			<div class="col-sm-5 offset-sm-1">
 				<?php get_template_part( 'template-parts/content', 'newsletters' ); ?>
 			</div> <!-- .col -->
 			

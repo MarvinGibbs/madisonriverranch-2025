@@ -4,7 +4,7 @@
 	<article>
 		<div class="container clearfix">
 			<div class="row">
-				<div class="col-sm-offset-5 col-sm-7 main-section-text">
+				<div class="offset-sm-5 col-sm-7 main-section-text">
 					<h1><?php bloginfo('name'); ?></h1>
 					<p class="lead"><?php bloginfo('description'); ?></p>
 
@@ -15,7 +15,7 @@
 
 					<!-- 🎯 View Demo Button -->
 					<div class="demo-button-wrap text-center">
-						<button id="viewDemoBtn" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#videoModal">
+						<button id="viewDemoBtn" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#videoModal">
 							View Trading Post Demo
 						</button>
 					</div>
@@ -26,9 +26,7 @@
 							<div class="modal-content">
 								<div class="modal-header">
 									<h5 class="modal-title" id="videoModalLabel">Trading Post Demo</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 								</div>
 								<div class="modal-body text-center">
 									<video controls autoplay width="100%">

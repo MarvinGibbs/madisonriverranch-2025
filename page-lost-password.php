@@ -19,7 +19,7 @@ get_header();
 <section id="lost-password">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 col-sm-offset-1">
+			<div class="col-sm-6 offset-sm-1">
 				<?php echo do_shortcode('[cmreg-reset-password showheader=1]'); ?>
 			</div> <!-- .col -->
 			

@@ -23,7 +23,7 @@ $common_area_combination = get_field('common_area_combination');
 <section id="gate-combination">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 col-sm-offset-1">
+			<div class="col-sm-6 offset-sm-1">
                 <h3>Main & Upper Gate #<?php echo $main_gate_combination; ?></h3>
                 <h3>Common Area Gate #<?php echo $common_area_combination; ?></h3>
 			</div> <!-- .col -->

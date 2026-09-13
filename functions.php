@@ -131,11 +131,13 @@ add_action( 'widgets_init', 'madisonriverranch_widgets_init' );
 function madisonriverranch_scripts() {
 	$rand = wp_rand( 1, 99999999999 );
 
-	// Bootstrap 3 core CSS — was a hardcoded <link> in header.php
-	wp_enqueue_style( 'mrr-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', [], '3.3.7' );
+	// Bootstrap 5 core CSS (bundled JS includes Popper) — was a hardcoded <link> in header.php
+	wp_enqueue_style( 'mrr-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', [], '5.3.8' );
 
-	// Font Awesome 4.6.3 — was a hardcoded <link> in header.php
-	wp_enqueue_style( 'mrr-font-awesome', get_template_directory_uri() . '/assets/css/font-awesome/css/font-awesome.min.css', [], '4.6.3' );
+	// Font Awesome 7, with the v4-shims + v4-font-face compatibility layer
+	// concatenated in so existing `fa fa-*` classes keep resolving without
+	// a class-rename pass yet — was a hardcoded <link> in header.php
+	wp_enqueue_style( 'mrr-font-awesome', get_template_directory_uri() . '/assets/css/font-awesome/css/font-awesome.min.css', [], '7.3.1' );
 
 	// Raleway (Google Fonts) — was a hardcoded <link> in header.php
 	wp_enqueue_style( 'mrr-google-fonts', 'https://fonts.googleapis.com/css?family=Raleway:400,700', [], null );
@@ -145,15 +147,19 @@ function madisonriverranch_scripts() {
 	// original <link> order before this was converted to wp_enqueue_*.
 	wp_enqueue_style( 'madisonriverranch-style', get_stylesheet_uri(), [ 'mrr-bootstrap', 'mrr-font-awesome', 'mrr-google-fonts' ], $rand );
 
-	// Bootstrap 3's JS (navbar toggle, dropdown, modal) requires jQuery.
-	// This makes that dependency explicit — it previously worked only
-	// because a plugin happened to load jQuery first as a side effect.
-	wp_enqueue_script( 'mrr-bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', [ 'jquery' ], '3.3.7', true );
+	// Bootstrap 5's own JS (bundled with Popper) no longer needs jQuery, but
+	// this theme's custom JS (main.js, cmreg-modal.js) still drives Bootstrap
+	// through jQuery's old plugin API, so jQuery stays a dependency here for
+	// now — revisit once that JS is updated to Bootstrap 5's vanilla-JS API.
+	wp_enqueue_script( 'mrr-bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', [ 'jquery' ], '5.3.8', true );
 
 	// was a hardcoded <script> in footer.php
 	wp_enqueue_script( 'mrr-main', get_template_directory_uri() . '/assets/js/main.js', [ 'jquery', 'mrr-bootstrap' ], '20151215', true );
 
-	wp_enqueue_script( 'madisonriverranch-navigation', get_template_directory_uri() . '/js/navigation.js', [], '20151215', true );
+	// Step 7 cleanup: js/navigation.js deleted. It targeted #site-navigation, which
+	// doesn't exist anywhere in the theme or in Max Mega Menu's markup - confirmed
+	// dead code, then verified live by commenting out its enqueue and testing (no
+	// visible or functional change).
 
 	wp_enqueue_script( 'madisonriverranch-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', [], '20151215', true );
 
