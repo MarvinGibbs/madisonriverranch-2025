@@ -68,7 +68,7 @@
 				?>
 			</div> <!-- .col -->
 			<div class="col-sm-3">
-				<p class="pull-right">&copy; 2009-<?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
+				<p class="float-end">&copy; 2009-<?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
 			</div> <!-- .col -->
 			</div> <!-- .row -->
 		</div> <!-- .container -->
