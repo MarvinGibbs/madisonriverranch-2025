@@ -116,8 +116,11 @@ input[type=checkbox]:checked + span:before {
    the logo area and the menu area as one seamless bar instead of two adjacent dark
    panels with a slightly different tint. .navbar-dark is still applied on the navbar
    element itself for its other effects (e.g. white link/brand color variables); this
-   background-color rule intentionally does not use .bg-dark. */
-.navbar.navbar-inverse {
+   background-color rule intentionally does not use .bg-dark.
+   Selector is bare .navbar (not .navbar.navbar-inverse) since the wrapper markup
+   simplification removed the dead navbar-inverse class - confirmed via grep this is
+   the only .navbar element in the theme, so no scoping is lost. */
+.navbar {
 	background-color: #222222;
 }
 
