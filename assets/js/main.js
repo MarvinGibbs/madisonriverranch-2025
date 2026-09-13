@@ -196,39 +196,8 @@ jQuery(document).ready(function() {
 			}
 		});
 	}
-	
-	/*  The following validates the subscribe button on the Optin modal dialog */
-	var inputs = $('form#myOptin input');
-	
-	var validateInputs = function validateInputs(inputs) {
-		var validForm = true;
-		inputs.each(function(index) {
-			var input = $(this);
-			if (input[0].tabIndex == undefined || input[0].tabIndex != -1 && input[0].type !== 'submit') {
-				if (input[0].type === 'text' && !input.val()) {
-					validForm = false;
-				}
-				else if (input[0].type === 'email' && !input.val().includes('@')) {
-					validForm = false;
-				}
-			}
-		});
-		if (!validForm) {
-			$('#mc-embedded-subscribe').attr('disabled', 'disabled');
-		}
-		return validForm;
-	}
-	
-	inputs.each(function() {
-		var input = $(this);
-		input.keyup(function() {
-			if (validateInputs(inputs)) {
-				$('#mc-embedded-subscribe').removeAttr('disabled');
-			}
-		});
-	});
-	
-	$('#myOptin').submit(function(e) {
-		$('#myModal').modal('hide');
-	});
+	// Step 7 cleanup: removed the #myOptin/#myModal newsletter-signup validation JS -
+	// the board removed the mailing-list signup modal from the site (replaced by the
+	// "Good Neighbor & Guest Policy" PDF button), so #myModal/#myOptin no longer exist
+	// anywhere in the markup (see footer.php) and this code had nothing left to do.
 });
