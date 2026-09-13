@@ -38,7 +38,7 @@
 		<!-- NAVEBAR
 		=============================================================================== -->
 		<div class="navbar-wrapper">
-			<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="navbar navbar-inverse navbar-fixed-top fixed-top" role="navigation">
 				<div class="container">
 					<div class="navbar-header">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navbar-brand"><img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/mrr-logo.png" alt="Madison River Ranch"></a>

@@ -424,14 +424,13 @@ Blue Gray:	#3e4249
 /* === !GENERAL === */
 
 body {
-	/* Bootstrap 5 stopgap: this 50px was clearance for BS3's .navbar-fixed-top,
-	   which takes the navbar out of flow (position:fixed) so it ignores this
-	   margin and overlays the top of the viewport regardless. BS5 has no
-	   .navbar-fixed-top, so the navbar now sits in normal flow and this margin
-	   just pushed it down, exposing a gap above it. Zeroed until the navbar is
-	   rebuilt for Bootstrap 5 (migration Step 4), which may reintroduce a fixed
-	   navbar and need this restored (likely via BS5's .fixed-top instead). */
-	margin-top: 0;
+	/* Bootstrap 5 stopgap: Step 4 experiment - navbar is now BS5's .fixed-top
+	   (position:fixed, taken out of flow), so page content needs its own
+	   clearance instead of the old margin-top trick (a margin on body does
+	   nothing for a fixed element sitting on top of it). Starting from the
+	   same 50px BS3's fixed navbar used to need, as an estimate - adjust
+	   this to match the navbar's actual rendered height once you can see it. */
+	padding-top: 50px;
 	font-family: 'soleil', 'Raleway', Helvetica, sans-serif;
 	font-size: 16px;
 	background: url('./assets/img/tile.jpg') top left repeat;
