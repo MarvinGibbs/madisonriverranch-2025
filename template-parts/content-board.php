@@ -9,7 +9,7 @@ $board_title = get_field( 'board_title' );
 <section id="board" class="feature-image-board">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-8 col-sm-offset-2">
+			<div class="col-sm-8 offset-sm-2">
 				<h2><?php echo $board_title; ?></h2>
 
 				<?php
