@@ -4,7 +4,7 @@
 	<article>
 		<div class="container clearfix">
 			<div class="row">
-				<div class="col-sm-offset-5 col-sm-7 main-section-text">
+				<div class="offset-sm-5 col-sm-7 main-section-text">
 					<h1><?php bloginfo('name'); ?></h1>
 					<p class="lead"><?php bloginfo('description'); ?></p>
 
