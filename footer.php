@@ -79,10 +79,7 @@
 			<div class="modal-content">
 
 				<div class="modal-header">
-					<button type="button" class="close" data-bs-dismiss="modal">
-						<span aria-hidden="true">&times;</span>
-						<span class="sr-only">Close</span>
-					</button>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					<h4 class="modal-title" id="myModalLabel">
 						<i class="fa fa-envelope"></i> Subscribe to our Mailing List
 					</h4>
