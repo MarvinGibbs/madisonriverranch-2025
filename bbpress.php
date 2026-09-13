@@ -16,18 +16,23 @@ get_header();
 	<div class="container">
 		<div class="row" id="primary">
 			<div id="content" class="col-sm-12">
-				<div class="panel-group" id="accordion">
+				<!-- Step 5: renamed off Bootstrap 3's Panel classes (panel-group/panel-heading/
+					 panel-body), which have no effect in Bootstrap 5 - kept the minimal look
+					 (plain colored text toggle, no bordered/boxed panel chrome) rather than
+					 adopting BS5's full Accordion component styling. .collapse is untouched,
+					 since it's still Bootstrap 5's real, functional collapse-behavior class. -->
+				<div class="guidelines-accordion" id="accordion">
 					<div class="bbp-guidelines">
 						<strong>Trading Post Guidelines:</strong> Please be respectful, stay on topic, and follow all community rules.
-						<a class="panel-heading" id="read-more-less" data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#collapseOne">Read More</a>
+						<a class="guidelines-toggle" id="read-more-less" data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#collapseOne">Read More</a>
 					</div>
-					<div id="collapseOne" class="panel-collapse collapse">
-				<div class="panel-body">
+					<div id="collapseOne" class="guidelines-collapse collapse">
+				<div class="guidelines-body">
 
 				<?php require get_template_directory() . '/inc/bbpress-forum-guidelines.php'; ?>
 
 					<div style="text-align: left; padding-left: 3em; padding-bottom: 1em;">
-						<a class="panel-heading" data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#collapseOne">Read Less</a>
+						<a class="guidelines-toggle" data-bs-toggle="collapse" data-bs-parent="#accordion" data-bs-target="#collapseOne">Read Less</a>
 					</div>
 				</div>
 			</div>

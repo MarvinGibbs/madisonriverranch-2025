@@ -911,7 +911,10 @@ section#board.feature-image-board::after {
 	margin-bottom: 0;
 }
 
-.bbpress .panel-heading {
+/* Step 5: renamed from .panel-heading (Bootstrap 3 Panel class, dead in Bootstrap 5) -
+   this was never a real panel header bar, just borrowed the class name for its color.
+   Kept the exact same minimal styling under its new name. */
+.bbpress .guidelines-toggle {
 	padding: 0;
 	cursor: pointer;
 	color: #c9302c;
