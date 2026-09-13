@@ -469,6 +469,21 @@ body {
 */
 
 /* === !GLOBAL === */
+
+/* Step 8 QA: .page-header was a real Bootstrap 3 component (border-bottom + spacing
+   under a heading); Bootstrap 5 removed it entirely with no direct replacement class,
+   so it was producing zero CSS (confirmed via grep on bootstrap.min.css). Used in
+   archive.php, search.php, and template-parts/content-none.php - WordPress's generic
+   fallback templates (blog archive, search results, "no posts found"), which this
+   site rarely if ever surfaces since it's built around custom page templates. Restored
+   the original Bootstrap 3 styling directly, since there's no BS5 utility equivalent
+   to swap in. */
+.page-header {
+	padding-bottom: 9px;
+	margin: 40px 0 20px;
+	border-bottom: 1px solid #eee;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
