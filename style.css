@@ -616,7 +616,7 @@ blockquote:before {
 #main-section {
 	background: url('./assets/img/mrr-main.jpg') center top no-repeat scroll;
 	background-size: cover;
-	height: 50vh;
+	min-height: 50vh;
 	padding: 40px 0;
 	color: white;
 	-webkit-font-smoothing: antialiased;
