@@ -60,7 +60,7 @@ if ( $publications->have_posts() ) : ?>
 					$uri = str_replace( 'https|', 'https://', $uri );
 					$pub_title = $post->post_title;
 			
-					echo "<li><i class='fa fa-file-pdf-o'></i> <a href='$uri' title='$filename' target='_blank'>$pub_title</a></li>";
+					echo "<li class='list-inline-item'><i class='fa fa-file-pdf-o'></i> <a href='$uri' title='$filename' target='_blank'>$pub_title</a></li>";
 			
 				endwhile; ?>
 
