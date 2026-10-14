@@ -29,7 +29,13 @@ if ( $publications->have_posts() ) : ?>
 				
 				$post_tags = wp_get_post_tags( $post->ID );
 				$tags = wp_list_pluck( $post_tags, 'name' );
-				$year = $tags[0];
+				$year = '';
+				foreach ( $tags as $tag ) {
+					if ( preg_match( '/^\d{4}$/', $tag ) ) {
+						$year = $tag;
+						break;
+					}
+				}
 				if ( strcmp($current_year, $year) != 0 ) :
 					// True - Starting a new year
 					if ( strcmp($current_year, "") != 0) :
@@ -50,7 +56,7 @@ if ( $publications->have_posts() ) : ?>
 				$uri = str_replace( 'https|', 'https://', $uri );
 				$pub_title = $post->post_title;
 		
-				echo "\n\t\t\t<li><span class='fa fa-file-pdf-o'></span> <a href='$uri' title='$filename' target='_blank'>$pub_title</a></li>";
+				echo "\n\t\t\t<li class='list-inline-item'><span class='fa fa-file-pdf-o'></span> <a href='$uri' title='$filename' target='_blank'>$pub_title</a></li>";
 		
 			endwhile; 
 			
