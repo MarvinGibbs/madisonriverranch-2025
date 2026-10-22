@@ -920,6 +920,50 @@ function mrr_block_indexing_on_staging() {
 }
 add_action( 'wp_head', 'mrr_block_indexing_on_staging' );
 
+// ------------------------------------------
+// Restrict Members Only, Trading Post, and Gates pages to logged-in
+// Administrators and Members. Replaces CM Site Access Restriction Pro's
+// enforcement, which turned out to be unreliable (worked fine for the
+// Members Only and Gates pages, but silently didn't for Trading Post -
+// bbPress's own internal routing apparently doesn't line up with
+// whatever object that plugin checks against). This check doesn't
+// depend on that plugin, its license, or bbPress's routing at all - it
+// just reads the page template directly off the Page object itself.
+// ------------------------------------------
+function mrr_restrict_member_pages() {
+	$restricted_templates = array(
+		'page-members-only.php',
+		'bbpress.php',          // Trading Post Page
+		'page-gate-combo.php',
+	);
+
+	if ( ! is_page_template( $restricted_templates ) ) {
+		return;
+	}
+
+	$allowed = false;
+	if ( is_user_logged_in() ) {
+		$user    = wp_get_current_user();
+		$allowed = in_array( 'administrator', $user->roles, true ) || in_array( 'member', $user->roles, true );
+	}
+
+	if ( $allowed ) {
+		return;
+	}
+
+	$access_denied_pages = get_pages( array(
+		'meta_key'   => '_wp_page_template',
+		'meta_value' => 'page-access-denied.php',
+		'number'     => 1,
+	) );
+
+	$redirect_url = ! empty( $access_denied_pages ) ? get_permalink( $access_denied_pages[0] ) : home_url( '/' );
+
+	wp_safe_redirect( $redirect_url );
+	exit;
+}
+add_action( 'template_redirect', 'mrr_restrict_member_pages' );
+
 /**
  * Implement the Custom Header feature.
  */
