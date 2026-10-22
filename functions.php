@@ -933,11 +933,18 @@ add_action( 'wp_head', 'mrr_block_indexing_on_staging' );
 function mrr_restrict_member_pages() {
 	$restricted_templates = array(
 		'page-members-only.php',
-		'bbpress.php',          // Trading Post Page
 		'page-gate-combo.php',
 	);
 
-	if ( ! is_page_template( $restricted_templates ) ) {
+	// Trading Post can't be reliably matched by page template - bbPress's
+	// own internal routing takes over once it's rendering, same blind spot
+	// that broke CM Site Access Restriction Pro. is_bbpress() is bbPress's
+	// own conditional tag for "is this request anywhere in the forum
+	// system" and isn't subject to that issue.
+	$is_restricted_page = is_page_template( $restricted_templates )
+		|| ( function_exists( 'is_bbpress' ) && is_bbpress() );
+
+	if ( ! $is_restricted_page ) {
 		return;
 	}
 
